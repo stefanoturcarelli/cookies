@@ -47,7 +47,7 @@
 			</div>
 		</div>
 
-		<div class="cookies-modal-container">
+		<div class="cookies-modal-first">
 			<div class="cookies-modal__header">
 				<h2>Cookies</h2>
 			</div>
@@ -59,11 +59,76 @@
 				</p>
 			</div>
 			<div class="cookies-modal__footer">
-				<button class="cookies-modal__footer__button cookies-modal__footer__button--accept">Accept</button>
-				<button class="cookies-modal__footer__button cookies-modal__footer__button--settings">Settings</button>
+				<button class="cookies-modal__button accept">Accept</button>
+				<button class="cookies-modal__button settings">Settings</button>
 			</div>
 		</div>
-		
+
+		<div class="cookies-modal-settings">
+			<div class="cookies-modal-settings__header">
+				<h2>Cookie Settings</h2>
+			</div>
+
+			<div class="cookies-modal-settings__body">
+
+				<div class="settings-options-row">
+
+					<div>
+						<p>Browser</p>
+					</div>
+					<!-- Rounded switch -->
+					<div>
+						<label class="switch">
+							<input class="browser-checkbox" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+					</div>
+
+				</div>
+
+				<div class="settings-options-row">
+					<div>
+						<p>Operating System</p>
+					</div>
+					<!-- Rounded switch -->
+					<div>
+						<label class="switch">
+							<input class="os-checkbox" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="settings-options-row">
+					<div>
+						<p>Screen Width</p>
+					</div>
+					<!-- Rounded switch -->
+					<div>
+						<label class="switch">
+							<input class="screen-width-checkbox" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+				<div class="settings-options-row">
+					<div>
+						<p>Screen Height</p>
+					</div>
+					<!-- Rounded switch -->
+					<div>
+						<label class="switch">
+							<input class="screen-height-checkbox" type="checkbox" checked>
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
+
+			</div>
+			<div class="cookies-modal-settings__footer">
+				<button class="cookies-modal__button save">Save Preferences</button>
+			</div>
+		</div>
+
 		<div class="overlay"></div>
 
 
