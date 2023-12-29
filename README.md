@@ -84,6 +84,54 @@ Decoding cookies is necessary when you want to read the data from the cookie. Th
 
 This process of encoding and decoding helps to ensure that the data in the cookie remains valid and intact throughout its lifecycle.
 
+The following JavaScript examples define two functions, `printCookiesUsingForOfLoop()` and `printCookiesUsingForEach()`, which both aim to print out the cookies stored in the document.
+
+Here's a step-by-step explanation:
+
+1. `printCookiesUsingForOfLoop()`: This function first splits the `document.cookie` string into an array of cookies. Then it creates an empty object `cookiesObj`. It loops over each cookie, splits it into a key-value pair, decodes the value using `decodeURIComponent()`, and adds the pair to `cookiesObj`. Finally, it logs `cookiesObj` to the console.
+2. `printCookiesUsingForEach()`: This function first checks if `document.cookie` is not an empty string. If it's not, it splits the `document.cookie` string into an array of cookies. Then it uses the `forEach()` method to loop over each cookie, split it into a key-value pair, decode both the key and value using `decodeURIComponent()`, and log the key-value pair to the console. If `document.cookie` is an empty string, it logs "No cookies found." to the console.
+3. `printCookiesUsingForOfLoop();` and `printCookiesUsingForEach();` are function calls that execute the two functions defined above.
+
+**Printing all cookies into an object using a For-Of Loop:**
+
+```jsx
+function printCookiesUsingForOfLoop() {
+  let cookies = document.cookie.split("; ");
+  let cookiesObj = {};
+  for (let cookie of cookies) {
+    let [key, value] = cookie.split("=");
+    cookiesObj[key] = decodeURIComponent(value);
+  }
+  console.log(cookiesObj);
+}
+
+printCookiesUsingForOfLoop();
+```
+
+**Printing each cookie individually using forEach()**
+
+```jsx
+function printCookiesUsingForEach() {
+  if (document.cookie !== "") {
+    const cookies = document.cookie.split("; ");
+    cookies.forEach((cookie) => {
+      let [key, value] = cookie.split("=");
+      console.log(`${decodeURIComponent(key)}: ${decodeURIComponent(value)}`);
+    });
+  } else {
+    console.log("No cookies found.");
+  }
+}
+
+printCookiesUsingForEach();
+```
+
+The `printCookiesUsingForOfLoop()` function collects all cookies into an object and then logs the entire object. This could be useful if you want to see all the cookies at once in a structured format.
+
+The `printCookiesUsingForEach()` function logs each cookie as it processes it. This could be useful if you want to see the cookies as they are processed or if there are so many cookies that creating an object would be inefficient.
+
+If you want a single object with all cookies, use `printCookiesUsingForOfLoop()`. If you want to process and print each cookie individually, use `printCookiesUsingForEach()`.
+
 ## Deleting Cookies
 
 There are two ways of deleting cookies:
