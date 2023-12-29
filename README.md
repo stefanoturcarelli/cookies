@@ -99,10 +99,6 @@ There are two ways of deleting cookies:
    const date = new Date();
    ```
 
-```
-
-```
-
 2. Use `setSeconds()` to set the seconds for the specified `date` according to the local time
 
    ```jsx
