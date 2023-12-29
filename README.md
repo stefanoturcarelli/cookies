@@ -180,7 +180,7 @@ setTimeout(() => {
 
 **Full example:**
 
-````jsx
+```jsx
 "use strict";
 
 // ! Deleting cookies using `max-age`
@@ -204,4 +204,3 @@ setTimeout(() => {
   console.log(`Cookies length: ${document.cookie.length}`);
 }, lifetime * 1000);
 ```
-````
