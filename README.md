@@ -12,37 +12,28 @@
 ## Intro to Cookies
 
 - **Cookie Basics:**
-
-  - Small text sent by a website to your browser.
+  - Cookies are small text (string) sent by a website to your browser, comprising a semicolon-separated list of associated cookies.
   - Aids in remembering visit information for a more user-friendly experience.
-
 - **HTTP Protocol Involvement:**
-
   - An integral part of the HTTP protocol.
   - Typically set by the web server using the 'Set-Cookie' HTTP header in the response.
-
 - **`document.cookie`:**
-
   - Allows reading and writing of cookies for the current document.
-  - A string comprising a semicolon-separated list of associated cookies.
   - Acts as both a getter and setter for the document's cookies.
-  - See the cookies associated with the current document:
-    ```jsx
-    // See the cookies associated with the current document.
-    console.log(document.cookie ? "Cookies available" : "No cookies available");
-    console.log(`Cookies length: ${document.cookie.length}`);
-    ```
-
 - **Encoding and Decoding:**
-
   - Encoding and decoding ensure cookie validity.
   - Utilize `encodeURIComponent()` for encoding and `decodeURIComponent()` for decoding.
-
 - **Restrictions:**
   - Maximum of 300 cookies in total.
   - Limit of 20 cookies per domain.
   - Cookies are restricted to 4KB in size.
   - Cookies must be in string format.
+- See the cookies associated with the current document
+  ```jsx
+  // See the cookies associated with the current document.
+  console.log(document.cookie ? "Cookies available" : "No cookies available");
+  console.log(`Cookies length: ${document.cookie.length}`);
+  ```
 
 ## Creating Cookies
 
@@ -60,6 +51,8 @@ There are two ways of deleting cookies:
    ```jsx
    const date = new Date();
    ```
+
+`````
 
 2. Use `setSeconds()` to set the seconds for the specified `date` according to the local time
 
@@ -170,4 +163,4 @@ setTimeout(() => {
 ## Demo
 
 [Click here to see the demo](https://stefanoturcarelli.github.io/cookies/)
-````
+`````
