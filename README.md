@@ -204,8 +204,4 @@ setTimeout(() => {
   console.log(`Cookies length: ${document.cookie.length}`);
 }, lifetime * 1000);
 ```
-
-## Demo
-
-[Click here to see the demo](https://stefanoturcarelli.github.io/cookies/)
 ````
