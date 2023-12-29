@@ -98,8 +98,7 @@ There are two ways of deleting cookies:
 console.log(document.cookie ? "Cookies available" : "No cookies available");
 console.log(`Cookies length: ${document.cookie.length}`);
 
-// * First, create a cookie
-// Set a date object to the current date and time
+// Create a date object and set it to the current date and time
 const date = new Date();
 
 // setSeconds() sets the seconds for a specified date according to local time
@@ -112,12 +111,11 @@ let dateString = date.toDateString();
 // Convert the date object to a UTC string
 let UTCDate = date.toUTCString();
 
-// * Now, delete the cookie using `expires`
-// Set an expiration date (in a UTC format)
+// Create the cookie using the ExpireDate and `expires` values
 document.cookie = `ExpireDate=${dateString}; path=/; expires=${UTCDate}`;
 console.log(`Cookie we created: ${document.cookie}`);
 
-// After 20 seconds, this code will run and the cookies will be gone.
+// After 20 seconds, this code will run, and the cookies will be gone.
 setTimeout(() => {
   console.log("20 seconds have passed");
   console.log(`Cookies in this document: ${document.cookie}`);
@@ -128,6 +126,48 @@ setTimeout(() => {
 
 ### Deleting cookies using `max-age`
 
+1. Create a `lifetime` variable and set it to 20 seconds.
+
+   ```jsx
+   let lifetime = 20;
+   ```
+
+2. Create a cookie using the `lifetime` we have created.
+
+   ```jsx
+   document.cookie = `Job=Instructor;  path=/; max-age=${lifetime}; SameSite=Lax; Secure`;
+   ```
+
+3. Wait for 20 seconds and refresh the browser. The cookies will be gone.
+
+**Full example:**
+
+````jsx
+"use strict";
+
+// ! Deleting cookies using `max-age`
+
+// See the cookies associated with the current document.
+console.log(document.cookie ? "Cookies available" : "No cookies available");
+console.log(`Cookies length: ${document.cookie.length}`);
+
+// Create a lifetime variable and set it to 20 seconds
+let lifetime = 20;
+
+// Create the cookie using the lifetime we have created
+document.cookie = `Job=Instructor;  path=/; max-age=${lifetime}; SameSite=Lax; Secure`;
+
+// After 20 seconds, this code will run, and the cookies will be gone.
+// lifetime * 1000 milliseconds gives us 20 seconds.
+setTimeout(() => {
+  console.log("20 seconds have passed");
+  console.log(`Cookies in this document: ${document.cookie}`);
+  console.log(document.cookie ? "Cookies available" : "No cookies available");
+  console.log(`Cookies length: ${document.cookie.length}`);
+}, lifetime * 1000);
+```
+
 ## Demo
 
 [Click here to see the demo](https://stefanoturcarelli.github.io/cookies/)
+````
