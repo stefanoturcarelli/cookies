@@ -5,6 +5,8 @@
 **Table of contents**
 
 - [Intro to Cookies](#intro-to-cookies)
+- [Creating Cookies](#creating-cookies)
+  - [Encoding cookies using `encodeURIComponent()`](#encoding-cookies-using-encodeuricomponent)
 - [Deleting Cookies](#deleting-cookies)
   - [Deleting cookies using `expires`](#deleting-cookies-using-expires)
   - [Deleting cookies using `max-age`](#deleting-cookies-using-max-age)
@@ -17,7 +19,7 @@
 - **HTTP Protocol Involvement:**
   - An integral part of the HTTP protocol.
   - Typically set by the web server using the 'Set-Cookie' HTTP header in the response.
-- **`document.cookie`:**
+- **The property `document.cookie`:**
   - Allows reading and writing of cookies for the current document.
   - Acts as both a getter and setter for the document's cookies.
 - **Encoding and Decoding:**
@@ -37,6 +39,51 @@
 
 ## Creating Cookies
 
+Setting a cookie:
+To work properly with cookies we must know how to encode and decode them. We achieve this with `encodeURIComponent()` and `decodeURIComponent()`.
+
+The`document.cookie` property allows you to read and write cookies associated with the document. It acts as both a getter and a setter for the document's cookies.
+
+```jsx
+document.cookie = "Name=John";
+console.log(document.cookie); // document.cookie: Name=John
+```
+
+### Encoding cookies using `encodeURIComponent()`
+
+Encoding cookies is important for ensuring that the data within the cookie is transmitted correctly. This is because cookies can only contain ASCII data and must exclude certain characters like semicolons, commas, and whitespace.
+
+The `encodeURIComponent()` function in JavaScript is used to encode a URI component by replacing each instance of certain characters with one, two, three, or four escape sequences representing the UTF-8 encoding of the character.
+
+The following JavaScript code creates two cookies: one for the first name and another for the city.
+
+```jsx
+let firstNameKey = encodeURIComponent("First Name");
+let firstNameValue = encodeURIComponent("John Smith");
+let city = encodeURIComponent("New York");
+
+document.cookie = `${firstNameKey}=${firstNameValue}`;
+document.cookie = `City=${city}`;
+
+console.log(document.cookie);
+// document.cookie: First%20Name=John%20Smith; City=New%20York
+```
+
+1. `let firstNameKey = encodeURIComponent("First Name");` - This line encodes the string "First Name" to make it safe for use as a cookie key. Spaces are encoded as `%20`.
+2. `let firstNameValue = encodeURIComponent("John Smith");` - This line encodes the string "John Smith" to make it safe for use as a cookie value. Again, spaces are encoded as `%20`.
+3. `let city = encodeURIComponent("New York");` - This line encodes the string "New York" to make it safe for use as a cookie value.
+4. `` document.cookie = `${firstNameKey}=${firstNameValue} ``;`` - This line is setting a cookie with the key "First Name" and the value "John Smith". The cookie string is constructed using template literals.
+5. `` document.cookie = `City=${city}`; `` - This line is setting another cookie with the key "City" and the value "New York".
+6. `console.log(document.cookie);` - This line is logging the current document's cookies to the console. The output will be `First%20Name=John%20Smith; City=New%20York`.
+
+Remember, the `document.cookie` property allows you to read and write cookies associated with the document. It acts as both a getter and a setter for the document's cookies.
+
+### Decoding cookies using `decodeURIComponent()`
+
+Decoding cookies is necessary when you want to read the data from the cookie. The `decodeURIComponent()` function is used to decode a URI component.
+
+This process of encoding and decoding helps to ensure that the data in the cookie remains valid and intact throughout its lifecycle.
+
 ## Deleting Cookies
 
 There are two ways of deleting cookies:
@@ -52,7 +99,9 @@ There are two ways of deleting cookies:
    const date = new Date();
    ```
 
-`````
+```
+
+```
 
 2. Use `setSeconds()` to set the seconds for the specified `date` according to the local time
 
@@ -163,4 +212,4 @@ setTimeout(() => {
 ## Demo
 
 [Click here to see the demo](https://stefanoturcarelli.github.io/cookies/)
-`````
+````
