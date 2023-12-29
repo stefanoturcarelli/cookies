@@ -11,6 +11,7 @@ console.log(`Cookies length: ${document.cookie.length}`);
 const date = new Date();
 
 // setSeconds() sets the seconds for a specified date according to local time
+// The cookie will be deleted after 20 seconds
 date.setSeconds(date.getSeconds() + 20);
 
 // Convert the date object to a string
@@ -24,7 +25,7 @@ let UTCDate = date.toUTCString();
 document.cookie = `ExpireDate=${dateString}; path=/; expires=${UTCDate}`;
 console.log(`Cookie we created: ${document.cookie}`);
 
-// The cookie will be deleted after 20 seconds
+// After 20 seconds, this code will run and the cookies will be gone.
 setTimeout(() => {
   console.log("20 seconds have passed");
   console.log(`Cookies in this document: ${document.cookie}`);
